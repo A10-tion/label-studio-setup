@@ -1,0 +1,14 @@
+services:
+    label-studio:
+        image: heartexlabs/label-studio:latest
+        container_name: label-studio
+        ports:
+            - '8080:8080'
+        env_file:
+            - .env
+        volumes:
+            # 1) Your roblox-avatar-data lives here for import
+            - ./roblox-avatar-data:/label-studio/files/roblox-avatar-data
+            # 2) Label Studio’s internal data (DB + uploads) lives here
+            - ./labelstudio_data:/label-studio/data
+        restart: unless-stopped
