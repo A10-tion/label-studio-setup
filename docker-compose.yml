@@ -4,8 +4,9 @@ services:
         container_name: label-studio
         ports:
             - '8080:8080'
-        env_file:
-            - .env
+        environment:
+            - LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED=true
+            - LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT=/label-studio/files
         volumes:
             # 1) Your roblox-avatar-data lives here for import
             - ./roblox-avatar-data:/label-studio/files/roblox-avatar-data
